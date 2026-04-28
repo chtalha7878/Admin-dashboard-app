@@ -2,9 +2,7 @@ import React, { useState } from "react";
 import { DataGrid} from "@mui/x-data-grid";
 import {Link} from 'react-router-dom'
 import { DeleteOutline } from "@mui/icons-material";
-
 import { productDatas } from "../../dataFile/productData";
-import './productlist.css'
 
 export default function ProductList() {
     const [data, setData] = useState(productDatas);
@@ -17,14 +15,14 @@ export default function ProductList() {
       {
         field: "product",
         headerName: "product",
-        width: 200,
+        width: 250,
         renderCell: (params) => {
           return (
-            <div className="productListItem">
+            <div className="flex items-center">
               <img
                 src={params.row.img}
-                alt="no internet conection"
-                className="productListImg"
+                alt="avatar"
+                className="w-10 h-10 rounded-full mr-3 object-cover border border-gray-200"
               />
               {params.row.username}
             </div>
@@ -35,7 +33,7 @@ export default function ProductList() {
       {
         field: "status",
         headerName: "status",
-        width: 90,
+        width: 120,
       },
       {
         field: "price",
@@ -48,13 +46,12 @@ export default function ProductList() {
         width: 160,
         renderCell: (params) => {
           return (
-            <div className="actionContainer">
+            <div className="flex items-center gap-4">
               <Link to={"/user/" + params.row.id}>
-              
-              <button className="productListEdit">Edit</button>
+                <button className="bg-primary hover:bg-blue-700 text-white border-none rounded-lg py-1.5 px-3 text-sm font-medium transition duration-150 cursor-pointer">Edit</button>
               </Link>
               <DeleteOutline
-                className="productDelete"
+                className="text-red-500 cursor-pointer hover:text-red-700 transition duration-150"
                 onClick={() => handleDelete(params.row.id)}
               />
             </div>
@@ -64,15 +61,18 @@ export default function ProductList() {
     ];
   
   return (
-    <div className='productListContainer'>
-         <DataGrid
-        rows={data}
-        columns={columns}
-        disableSelectionOnClick
-        pageSize={8}
-        rowsPerPageOptions={[5]}
-        checkboxSelection
-      />
+    <div className='flex-1 p-6 w-full'>
+      <div className="bg-white rounded-xl shadow-sm border border-gray-200 h-[600px] w-full p-4">
+        <DataGrid
+          rows={data}
+          columns={columns}
+          disableSelectionOnClick
+          pageSize={8}
+          rowsPerPageOptions={[8]}
+          checkboxSelection
+          sx={{ border: 0 }}
+        />
+      </div>
     </div>
   )
 }

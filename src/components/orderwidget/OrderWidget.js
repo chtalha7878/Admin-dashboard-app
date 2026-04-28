@@ -1,88 +1,96 @@
 import React from 'react'
-import './orderWidget.css'
 
 export default function OrderWidget() {
-    const Button =({type})=>{
-      return <button className={'orderButton ' + type}>{type}</button>
+    const Button = ({type}) => {
+      const typeStyles = {
+        Approved: 'bg-green-100 text-green-700',
+        Pending: 'bg-yellow-100 text-yellow-700',
+        Cancel: 'bg-red-100 text-red-700'
+      }
+      return <button className={`py-1 px-3 rounded-lg text-xs font-medium ${typeStyles[type] || 'bg-gray-100 text-gray-700'}`}>{type}</button>
     }
   return (
-    <div className='orderContainer'>
-        <h3 className='orderTitle'>Latest Transaction</h3>
-        <table className='orderTable'>
-           <tr className='orderTr'>
-              <th className='orderTh'>Customer</th>
-              <th className='orderTh'>Date</th>
-              <th className='orderTh'>Product</th>
-              <th className='orderTh'>Amount</th>
-              <th className='orderTh'>Location</th>
-              <th className='orderTh'>Status</th>
-           </tr>
-           <tr className='orderTr'>
-            <td className='orderUser'>
-                <img src='images/productsImg/earphone.jpg' alt='internet issue' className='orderImg'/>
-                <span className='orderName'>earphone</span>
+    <div className='bg-white p-6 rounded-xl border border-gray-200 shadow-sm flex-[2] w-full overflow-x-auto'>
+        <h3 className='text-lg font-medium text-gray-600 mb-4'>Latest Transactions</h3>
+        <table className='w-full min-w-[600px] text-left'>
+           <thead>
+             <tr className='text-gray-500 text-sm border-b border-gray-100'>
+                <th className='pb-3 font-medium'>Customer</th>
+                <th className='pb-3 font-medium'>Date</th>
+                <th className='pb-3 font-medium'>Product</th>
+                <th className='pb-3 font-medium'>Amount</th>
+                <th className='pb-3 font-medium'>Location</th>
+                <th className='pb-3 font-medium'>Status</th>
+             </tr>
+           </thead>
+           <tbody>
+           <tr className='border-b border-gray-50 last:border-0 hover:bg-gray-50 transition duration-150'>
+            <td className='py-3 flex items-center'>
+                <img src='images/productsImg/earphone.jpg' alt='earphone' className='w-10 h-10 rounded-full object-cover mr-3 border border-gray-200'/>
+                <span className='font-medium text-gray-700'>earphone</span>
             </td>
-            <td className='orderDate'>4 Jan 2023</td>
-            <td className='orderName'>Samsung earphone</td>
-            <td className='orderAmount'>$404</td>
-            <td className='orderLocation'>USA</td>
-            <td className='orderStatus'><Button type='Approved'/></td>
+            <td className='py-3 text-sm text-gray-500'>4 Jan 2023</td>
+            <td className='py-3 text-sm text-gray-700'>Samsung earphone</td>
+            <td className='py-3 text-sm font-medium text-gray-700'>$404</td>
+            <td className='py-3 text-sm text-gray-500'>USA</td>
+            <td className='py-3'><Button type='Approved'/></td>
            </tr>
-           <tr className='orderTr'>
-            <td className='orderUser'>
-                <img src='images/productsImg/jacket.jpeg' alt='internet issue' className='orderImg'/>
-                <span className='orderName'>Jacket</span>
+           <tr className='border-b border-gray-50 last:border-0 hover:bg-gray-50 transition duration-150'>
+            <td className='py-3 flex items-center'>
+                <img src='images/productsImg/jacket.jpeg' alt='Jacket' className='w-10 h-10 rounded-full object-cover mr-3 border border-gray-200'/>
+                <span className='font-medium text-gray-700'>Jacket</span>
             </td>
-            <td className='orderDate'>4 Jan 2023</td>
-            <td className='orderName'>Gucci</td>
-            <td className='orderAmount'>$334</td>
-            <td className='orderLocation'>UK</td>
-            <td className='orderStatus'><Button type='Cancel'/></td>
+            <td className='py-3 text-sm text-gray-500'>4 Jan 2023</td>
+            <td className='py-3 text-sm text-gray-700'>Gucci</td>
+            <td className='py-3 text-sm font-medium text-gray-700'>$334</td>
+            <td className='py-3 text-sm text-gray-500'>UK</td>
+            <td className='py-3'><Button type='Cancel'/></td>
            </tr>
-           <tr className='orderTr'>
-            <td className='orderUser'>
-                <img src='images/productsImg/earphone.jpg' alt='internet issue' className='orderImg'/>
-                <span className='orderName'>earphone</span>
+           <tr className='border-b border-gray-50 last:border-0 hover:bg-gray-50 transition duration-150'>
+            <td className='py-3 flex items-center'>
+                <img src='images/productsImg/earphone.jpg' alt='earphone' className='w-10 h-10 rounded-full object-cover mr-3 border border-gray-200'/>
+                <span className='font-medium text-gray-700'>earphone</span>
             </td>
-            <td className='orderDate'>4 Jan 2023</td>
-            <td className='orderName'>Samsung earphone</td>
-            <td className='orderAmount'>$404</td>
-            <td className='orderLocation'>USA</td>
-            <td className='orderStatus'><Button type='Pending'/></td>
+            <td className='py-3 text-sm text-gray-500'>4 Jan 2023</td>
+            <td className='py-3 text-sm text-gray-700'>Samsung earphone</td>
+            <td className='py-3 text-sm font-medium text-gray-700'>$404</td>
+            <td className='py-3 text-sm text-gray-500'>USA</td>
+            <td className='py-3'><Button type='Pending'/></td>
            </tr>
-           <tr className='orderTr'>
-            <td className='orderUser'>
-                <img src='images/productsImg/earphone.jpg' alt='internet issue' className='orderImg'/>
-                <span className='orderName'>earphone</span>
+           <tr className='border-b border-gray-50 last:border-0 hover:bg-gray-50 transition duration-150'>
+            <td className='py-3 flex items-center'>
+                <img src='images/productsImg/earphone.jpg' alt='earphone' className='w-10 h-10 rounded-full object-cover mr-3 border border-gray-200'/>
+                <span className='font-medium text-gray-700'>earphone</span>
             </td>
-            <td className='orderDate'>4 Jan 2023</td>
-            <td className='orderName'>Samsung earphone</td>
-            <td className='orderAmount'>$404</td>
-            <td className='orderLocation'>USA</td>
-            <td className='orderStatus'><Button type='Approved'/></td>
+            <td className='py-3 text-sm text-gray-500'>4 Jan 2023</td>
+            <td className='py-3 text-sm text-gray-700'>Samsung earphone</td>
+            <td className='py-3 text-sm font-medium text-gray-700'>$404</td>
+            <td className='py-3 text-sm text-gray-500'>USA</td>
+            <td className='py-3'><Button type='Approved'/></td>
            </tr>
-           <tr className='orderTr'>
-            <td className='orderUser'>
-                <img src='images/productsImg/earphone.jpg' alt='internet issue' className='orderImg'/>
-                <span className='orderName'>earphone</span>
+           <tr className='border-b border-gray-50 last:border-0 hover:bg-gray-50 transition duration-150'>
+            <td className='py-3 flex items-center'>
+                <img src='images/productsImg/earphone.jpg' alt='earphone' className='w-10 h-10 rounded-full object-cover mr-3 border border-gray-200'/>
+                <span className='font-medium text-gray-700'>earphone</span>
             </td>
-            <td className='orderDate'>4 Jan 2023</td>
-            <td className='orderName'>Samsung earphone</td>
-            <td className='orderAmount'>$404</td>
-            <td className='orderLocation'>USA</td>
-            <td className='orderStatus'><Button type='Pending'/></td>
+            <td className='py-3 text-sm text-gray-500'>4 Jan 2023</td>
+            <td className='py-3 text-sm text-gray-700'>Samsung earphone</td>
+            <td className='py-3 text-sm font-medium text-gray-700'>$404</td>
+            <td className='py-3 text-sm text-gray-500'>USA</td>
+            <td className='py-3'><Button type='Pending'/></td>
            </tr>
-           <tr className='orderTr'>
-            <td className='orderUser'>
-                <img src='images/productsImg/earphone.jpg' alt='internet issue' className='orderImg'/>
-                <span className='orderName'>earphone</span>
+           <tr className='border-b border-gray-50 last:border-0 hover:bg-gray-50 transition duration-150'>
+            <td className='py-3 flex items-center'>
+                <img src='images/productsImg/earphone.jpg' alt='earphone' className='w-10 h-10 rounded-full object-cover mr-3 border border-gray-200'/>
+                <span className='font-medium text-gray-700'>earphone</span>
             </td>
-            <td className='orderDate'>4 Jan 2023</td>
-            <td className='orderName'>Samsung earphone</td>
-            <td className='orderAmount'>$404</td>
-            <td className='orderLocation'>USA</td>
-            <td className='orderStatus'><Button type='Cancel'/></td>
+            <td className='py-3 text-sm text-gray-500'>4 Jan 2023</td>
+            <td className='py-3 text-sm text-gray-700'>Samsung earphone</td>
+            <td className='py-3 text-sm font-medium text-gray-700'>$404</td>
+            <td className='py-3 text-sm text-gray-500'>USA</td>
+            <td className='py-3'><Button type='Cancel'/></td>
            </tr>
+           </tbody>
         </table>
     </div>
   )
